@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="upload-section">
+    <div class="message success-message">
+        <h2>Certificate Uploaded Successfully</h2>
+
+        <p>
+            Your certificate has been stored and is ready for OCR and QR analysis.
+        </p>
+
+        <p><strong>Verification Request ID:</strong> {{ request_id }}</p>
+        <p><strong>File Name:</strong> {{ original_filename }}</p>
+        <p><strong>Format:</strong> {{ file_extension|upper }}</p>
+        <p><strong>File Size:</strong> {{ "%.2f"|format(file_size / 1024) }} KB</p>
+
+        <a class="primary-button" href="/upload">
+            Upload Another Certificate
+        </a>
+    </div>
+</section>
+{% endblock %}

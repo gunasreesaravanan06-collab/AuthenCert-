@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="verify-section">
+    <h2>Verify a Certificate</h2>
+
+    <p class="subtitle">
+        Enter a certificate ID to check whether it is valid.
+    </p>
+
+    <form method="POST" class="verify-form">
+        <label for="certificate_id">Certificate ID</label>
+
+        <input
+            type="text"
+            id="certificate_id"
+            name="certificate_id"
+            placeholder="Example: AC-2026-001"
+            required
+        >
+
+        <button type="submit">Verify Certificate</button>
+    </form>
+
+    {% if certificate %}
+        <section class="result-card verified">
+            <h3>✓ Certificate Verified</h3>
+
+            <p><strong>Certificate ID:</strong> {{ certificate["certificate_id"] }}</p>
+            <p><strong>Recipient:</strong> {{ certificate["recipient_name"] }}</p>
+            <p><strong>Course:</strong> {{ certificate["course_name"] }}</p>
+            <p><strong>Issued By:</strong> {{ certificate["issuer_name"] }}</p>
+            <p><strong>Issue Date:</strong> {{ certificate["issue_date"] }}</p>
+            <p><strong>Status:</strong> {{ certificate["status"] }}</p>
+        </section>
+
+    {% elif searched_id %}
+        <section class="result-card not-found">
+            <h3>Certificate Not Found</h3>
+
+            <p>
+                No valid certificate was found for:
+                <strong>{{ searched_id }}</strong>
+            </p>
+        </section>
+    {% endif %}
+</section>
+{% endblock %}

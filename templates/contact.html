@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Contact | AuthenCert{% endblock %}
+
+{% block content %}
+<section class="simple-hero">
+    <div class="container center-text">
+        <span class="section-label">CONTACT US</span>
+
+        <h1>Need help with verification? 💬</h1>
+
+        <p>
+            Send your question and our support team will assist you.
+        </p>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="container contact-grid">
+        <div class="contact-info">
+            <span class="contact-icon">🛡️</span>
+
+            <h2>Your verification workflow matters.</h2>
+
+            <p>
+                For project questions, verification flow support, or
+                document processing issues, reach out to us.
+            </p>
+
+            <div class="contact-detail">
+                <strong>Email</strong>
+                <span>support@authencert.local</span>
+            </div>
+
+            <div class="contact-detail">
+                <strong>Working Hours</strong>
+                <span>Monday to Friday · 9 AM to 6 PM</span>
+            </div>
+        </div>
+
+        <form class="contact-form">
+            <label>
+                Your Name
+                <input type="text" placeholder="Enter your name">
+            </label>
+
+            <label>
+                Email Address
+                <input type="email" placeholder="name@example.com">
+            </label>
+
+            <label>
+                Subject
+                <input type="text" placeholder="How can we help?">
+            </label>
+
+            <label>
+                Message
+                <textarea placeholder="Write your message..."></textarea>
+            </label>
+
+            <button type="button" class="verify-submit">
+                Send Message →
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}

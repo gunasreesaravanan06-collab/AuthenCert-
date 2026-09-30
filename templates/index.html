@@ -1,0 +1,244 @@
+﻿{% extends "base.html" %}
+
+{% block title %}AuthenCert | Smart Verification{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container hero-layout">
+        <div class="hero-copy">
+            <span class="hero-badge">
+                <span class="pulse-dot"></span>
+                Trusted Academic Verification
+            </span>
+
+            <h1>
+                Verify documents.<br>
+                <span>Protect trust.</span>
+            </h1>
+
+            <p>
+                A secure verification platform that extracts document
+                details, scans QR codes, connects to official sources,
+                and identifies possible tampering.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/upload" class="button-primary">
+                    <span>🚀</span>
+                    Verify a Document
+                    <b>→</b>
+                </a>
+
+                <a href="#workflow" class="button-secondary">
+                    <span>▶</span>
+                    How It Works
+                </a>
+            </div>
+
+            <div class="hero-trust-row">
+                <span>✓ OCR Extraction</span>
+                <span>✓ QR Validation</span>
+                <span>✓ Official Comparison</span>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="floating-tag tag-top">
+                <span>✦</span>
+                Secure QR Source
+            </div>
+
+            <div class="certificate-stack back-card"></div>
+
+            <div class="certificate-stack middle-card"></div>
+
+            <article class="certificate-3d-card">
+                <div class="certificate-card-top">
+                    <span class="mini-logo">✓</span>
+
+                    <span class="verified-pill">
+                        ✓ VERIFIED
+                    </span>
+                </div>
+
+                <div class="certificate-main-icon">📜</div>
+
+                <h3>Certificate Verified</h3>
+
+                <p>
+                    Official details matched successfully.
+                </p>
+
+                <div class="certificate-progress">
+                    <div class="progress-info">
+                        <span>Verification Confidence</span>
+                        <strong>98%</strong>
+                    </div>
+
+                    <div class="progress-bar">
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="certificate-mini-grid">
+                    <div>
+                        <small>Matched</small>
+                        <strong>06</strong>
+                    </div>
+
+                    <div>
+                        <small>Mismatch</small>
+                        <strong>00</strong>
+                    </div>
+
+                    <div>
+                        <small>QR</small>
+                        <strong>Found</strong>
+                    </div>
+                </div>
+            </article>
+
+            <div class="floating-tag tag-bottom">
+                <span class="green-icon">✓</span>
+                Official Record Matched
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="trusted-strip">
+    <div class="container">
+        <p>Built for smarter educational document verification</p>
+
+        <div class="trusted-items">
+            <span>🔍 OCR Powered</span>
+            <span>▣ QR Enabled</span>
+            <span>⇄ Official Comparison</span>
+            <span>🛡️ Tampering Signals</span>
+        </div>
+    </div>
+</section>
+
+<section class="feature-section">
+    <div class="container">
+        <div class="section-intro">
+            <span class="section-label">WHY AUTHENCERT</span>
+
+            <h2>
+                Every document deserves a trusted verification path.
+            </h2>
+
+            <p>
+                Simple upload experience. Powerful verification workflow.
+                Clear results for every document.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+            <article class="feature-card indigo-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Smart OCR Reader</h3>
+                <p>
+                    Extract names, roll numbers, register numbers,
+                    marks, dates, courses, and institutions.
+                </p>
+                <span>Extract details →</span>
+            </article>
+
+            <article class="feature-card violet-card">
+                <div class="feature-icon">▣</div>
+                <h3>QR Source Scan</h3>
+                <p>
+                    Decode QR content from PDF and image documents
+                    using multiple scanning methods.
+                </p>
+                <span>Scan QR →</span>
+            </article>
+
+            <article class="feature-card blue-card">
+                <div class="feature-icon">⇄</div>
+                <h3>Official Comparison</h3>
+                <p>
+                    Compare uploaded information against official
+                    verification records and show field-level results.
+                </p>
+                <span>Compare details →</span>
+            </article>
+
+            <article class="feature-card pink-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Tampering Signals</h3>
+                <p>
+                    Highlight suspicious mismatches while keeping
+                    manual review available for unclear cases.
+                </p>
+                <span>Review signals →</span>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="workflow" class="workflow-section">
+    <div class="container">
+        <div class="section-intro center-text">
+            <span class="section-label">HOW IT WORKS</span>
+            <h2>Verification in four simple steps</h2>
+        </div>
+
+        <div class="workflow-grid">
+            <article class="workflow-card">
+                <span class="workflow-number">01</span>
+                <span class="workflow-emoji">📤</span>
+                <h3>Upload</h3>
+                <p>Upload a PDF, JPG, JPEG, or PNG document.</p>
+            </article>
+
+            <article class="workflow-card">
+                <span class="workflow-number">02</span>
+                <span class="workflow-emoji">🔍</span>
+                <h3>Extract</h3>
+                <p>OCR reads document text and detects key fields.</p>
+            </article>
+
+            <article class="workflow-card">
+                <span class="workflow-number">03</span>
+                <span class="workflow-emoji">▣</span>
+                <h3>Validate</h3>
+                <p>QR content links the document to an official source.</p>
+            </article>
+
+            <article class="workflow-card">
+                <span class="workflow-number">04</span>
+                <span class="workflow-emoji">✨</span>
+                <h3>Compare</h3>
+                <p>Official and uploaded details are compared clearly.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-card">
+            <div>
+                <span class="section-label light-label">
+                    READY TO VERIFY?
+                </span>
+
+                <h2>
+                    Start your secure verification workflow today.
+                </h2>
+
+                <p>
+                    Upload your certificate or marksheet and receive a
+                    clear verification result.
+                </p>
+            </div>
+
+            <a href="/upload" class="button-white">
+                Verify Document →
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

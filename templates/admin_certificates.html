@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="admin-section">
+    <h2>Admin: Certificate Management</h2>
+
+    <p class="subtitle">
+        Add a certificate and verify it from the public verification page.
+    </p>
+
+    <form method="POST" action="/admin/certificates/add" class="certificate-form">
+        <div class="form-group">
+            <label for="certificate_id">Certificate ID</label>
+            <input
+                type="text"
+                id="certificate_id"
+                name="certificate_id"
+                placeholder="Example: AC-2026-002"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="recipient_name">Recipient Name</label>
+            <input
+                type="text"
+                id="recipient_name"
+                name="recipient_name"
+                placeholder="Student name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="course_name">Course Name</label>
+            <input
+                type="text"
+                id="course_name"
+                name="course_name"
+                placeholder="Example: Data Analytics"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="issuer_name">Issuer Name</label>
+            <input
+                type="text"
+                id="issuer_name"
+                name="issuer_name"
+                value="AuthenCert Academy"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="issue_date">Issue Date</label>
+            <input
+                type="date"
+                id="issue_date"
+                name="issue_date"
+                required
+            >
+        </div>
+
+        <button type="submit">Add Certificate</button>
+    </form>
+
+    <section class="certificate-list">
+        <h3>Stored Certificates</h3>
+
+        {% if certificates %}
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Certificate ID</th>
+                            <th>Recipient</th>
+                            <th>Course</th>
+                            <th>Issue Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for certificate in certificates %}
+                        <tr>
+                            <td>{{ certificate["certificate_id"] }}</td>
+                            <td>{{ certificate["recipient_name"] }}</td>
+                            <td>{{ certificate["course_name"] }}</td>
+                            <td>{{ certificate["issue_date"] }}</td>
+                            <td>{{ certificate["status"] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No certificates have been added yet.</p>
+        {% endif %}
+    </section>
+</section>
+{% endblock %}

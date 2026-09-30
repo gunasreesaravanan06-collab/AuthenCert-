@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Verify Document | AuthenCert{% endblock %}
+
+{% block content %}
+<section class="upload-page">
+    <div class="container upload-layout">
+        <div class="upload-copy">
+            <a href="/" class="back-link">← Back to Home</a>
+
+            <span class="section-label">DOCUMENT VERIFICATION</span>
+
+            <h1>
+                Upload. Verify.<br>
+                <span>Trust the result.</span>
+            </h1>
+
+            <p>
+                Upload your certificate or marksheet. AuthenCert will
+                extract details, scan the QR code, and compare them
+                against the official verification source.
+            </p>
+
+            <div class="upload-benefits">
+                <div>
+                    <span>🔍</span>
+                    OCR field extraction
+                </div>
+
+                <div>
+                    <span>▣</span>
+                    QR source validation
+                </div>
+
+                <div>
+                    <span>🛡️</span>
+                    Tampering signal detection
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-card">
+            {% if error %}
+            <div class="form-error">
+                <strong>Upload Error</strong>
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+
+            <form
+                method="POST"
+                enctype="multipart/form-data"
+                id="upload-form"
+            >
+                <label
+                    for="certificate_file"
+                    class="dropzone"
+                    id="dropzone"
+                >
+                    <input
+                        type="file"
+                        id="certificate_file"
+                        name="certificate_file"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        hidden
+                        required
+                    >
+
+                    <span class="upload-cloud">☁</span>
+
+                    <h3>Drop your document here</h3>
+
+                    <p>
+                        PDF, JPG, JPEG, PNG · Maximum 10 MB
+                    </p>
+
+                    <span class="browse-file">
+                        Browse Files
+                    </span>
+                </label>
+
+                <div class="selected-file" id="selected-file-card">
+                    <span class="file-emoji">📄</span>
+
+                    <div>
+                        <strong id="selected-file-name">
+                            No file selected
+                        </strong>
+
+                        <small id="selected-file-size"></small>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="remove-file-button"
+                    >
+                        Remove
+                    </button>
+                </div>
+
+                <button
+                    type="submit"
+                    class="verify-submit"
+                    id="verify-button"
+                    disabled
+                >
+                    <span>✦</span>
+                    Start Secure Verification
+                    <b>→</b>
+                </button>
+            </form>
+
+            <div class="privacy-row">
+                <span>🔒</span>
+                Your document is processed only for verification.
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

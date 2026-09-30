@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Login | AuthenCert{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-box">
+        <div class="auth-form-side">
+            <a href="/" class="back-link">← Back to Home</a>
+
+            <span class="section-label">WELCOME BACK</span>
+
+            <h1>Sign in to AuthenCert 👋</h1>
+
+            <p>
+                Access your secure document verification workspace.
+            </p>
+
+            <form class="auth-form">
+                <label>
+                    Email Address
+                    <input
+                        type="email"
+                        placeholder="name@example.com"
+                    >
+                </label>
+
+                <label>
+                    Password
+                    <input
+                        type="password"
+                        placeholder="••••••••••••"
+                    >
+                </label>
+
+                <div class="auth-options">
+                    <label class="remember-label">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="button" class="verify-submit">
+                    Sign In →
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                New to AuthenCert?
+                <a href="/register">Create an account</a>
+            </p>
+        </div>
+
+        <div class="auth-visual-side">
+            <span class="auth-sparkle sparkle-one">✦</span>
+            <span class="auth-sparkle sparkle-two">✧</span>
+
+            <div class="auth-shield">✓</div>
+
+            <h2>Every record deserves trust.</h2>
+
+            <p>
+                Verify academic documents with intelligent OCR,
+                QR validation, and official source comparison.
+            </p>
+
+            <div class="auth-mini-card">
+                <span>🛡️</span>
+
+                <div>
+                    <small>Verification Status</small>
+                    <strong>Secure & Trusted</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Register | AuthenCert{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-box">
+        <div class="auth-form-side">
+            <a href="/" class="back-link">← Back to Home</a>
+
+            <span class="section-label">CREATE ACCOUNT</span>
+
+            <h1>Create your workspace ✨</h1>
+
+            <p>
+                Start building trusted document verification workflows.
+            </p>
+
+            <form class="auth-form">
+                <label>
+                    Full Name
+                    <input
+                        type="text"
+                        placeholder="Your full name"
+                    >
+                </label>
+
+                <label>
+                    Email Address
+                    <input
+                        type="email"
+                        placeholder="name@example.com"
+                    >
+                </label>
+
+                <label>
+                    Password
+                    <input
+                        type="password"
+                        placeholder="Create a password"
+                    >
+                </label>
+
+                <button type="button" class="verify-submit">
+                    Create Account →
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                Already have an account?
+                <a href="/login">Log in</a>
+            </p>
+        </div>
+
+        <div class="auth-visual-side">
+            <div class="auth-shield">✦</div>
+
+            <h2>Verify smarter. Protect trust.</h2>
+
+            <p>
+                Extract details, validate QR sources, and compare
+                records through one modern workflow.
+            </p>
+
+            <div class="auth-mini-card">
+                <span>📜</span>
+
+                <div>
+                    <small>Document Intelligence</small>
+                    <strong>OCR + QR + Comparison</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

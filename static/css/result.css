@@ -1,0 +1,899 @@
+/* ==========================================
+   AUTHENCERT — PROFESSIONAL RESULT PAGE
+========================================== */
+
+.beautiful-result-page {
+    min-height: 100vh;
+    padding: 54px 0 100px;
+    background:
+        radial-gradient(
+            circle at 8% 0%,
+            rgba(199, 210, 254, 0.68),
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 93% 7%,
+            rgba(186, 230, 253, 0.62),
+            transparent 24%
+        ),
+        linear-gradient(180deg, #f9faff 0%, #f5f7ff 100%);
+}
+
+.beautiful-result-page .container {
+    display: block;
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+/* -------------------------------
+   Top Row
+-------------------------------- */
+
+.result-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 19px;
+}
+
+.result-back-button {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    color: #4f46e5;
+    font-size: 13px;
+    font-weight: 800;
+    transition: 180ms ease;
+}
+
+.result-back-button:hover {
+    color: #312e81;
+    transform: translateX(-3px);
+}
+
+.request-chip {
+    padding: 8px 12px;
+    color: #6366f1;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    border: 1px solid #dfe3ff;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+}
+
+/* -------------------------------
+   Main Verification Banner
+-------------------------------- */
+
+.result-main-banner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr) 95px;
+    gap: 23px;
+    align-items: center;
+    padding: 31px;
+    margin-bottom: 21px;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 18px 42px rgba(49, 46, 129, 0.11);
+}
+
+.result-main-banner::after {
+    position: absolute;
+    top: -85px;
+    right: -55px;
+    width: 220px;
+    height: 220px;
+    content: "";
+    border-radius: 50%;
+    opacity: 0.55;
+}
+
+.result-success-banner {
+    border: 1px solid #bbf7d0;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(236, 253, 245, 0.95),
+            rgba(240, 253, 250, 0.94),
+            rgba(239, 246, 255, 0.95)
+        );
+}
+
+.result-success-banner::after {
+    background: #86efac;
+}
+
+.result-danger-banner {
+    border: 1px solid #fed7aa;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 247, 237, 0.96),
+            rgba(255, 241, 242, 0.95)
+        );
+}
+
+.result-danger-banner::after {
+    background: #fdba74;
+}
+
+.result-warning-banner {
+    border: 1px solid #fde68a;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 251, 235, 0.97),
+            rgba(255, 247, 237, 0.95)
+        );
+}
+
+.result-warning-banner::after {
+    background: #fcd34d;
+}
+
+.banner-emoji-circle {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 74px;
+    height: 74px;
+    place-items: center;
+    font-size: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.73);
+    box-shadow: 0 12px 25px rgba(49, 46, 129, 0.1);
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.banner-label,
+.eyebrow {
+    color: #6366f1;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+}
+
+.banner-content h1 {
+    margin: 7px 0 7px;
+    color: #1e1b4b;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.18;
+    letter-spacing: -0.04em;
+}
+
+.banner-content p {
+    max-width: 630px;
+    margin: 0;
+    color: #66708c;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.banner-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.banner-green-pill,
+.banner-red-pill,
+.banner-yellow-pill,
+.banner-white-pill {
+    padding: 8px 11px;
+    font-size: 10px;
+    font-weight: 900;
+    border-radius: 999px;
+}
+
+.banner-green-pill {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.banner-red-pill {
+    color: #c2410c;
+    background: #ffedd5;
+}
+
+.banner-yellow-pill {
+    color: #a16207;
+    background: #fef3c7;
+}
+
+.banner-white-pill {
+    color: #4f46e5;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.result-score-circle {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 88px;
+    height: 88px;
+    color: #15803d;
+    place-content: center;
+    text-align: center;
+    border: 6px solid #86efac;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.result-score-circle span {
+    font-size: 31px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.result-score-circle small {
+    margin-top: 5px;
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.warning-score {
+    color: #c2410c;
+    border-color: #fdba74;
+}
+
+.review-score {
+    color: #a16207;
+    border-color: #fcd34d;
+}
+
+/* -------------------------------
+   Small Overview Cards
+-------------------------------- */
+
+.quick-status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 23px;
+}
+
+.quick-status-card {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 19px;
+    border: 1px solid #e7e9f8;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 9px 24px rgba(49, 46, 129, 0.055);
+    transition: 200ms ease;
+}
+
+.quick-status-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px rgba(49, 46, 129, 0.1);
+}
+
+.quick-status-icon {
+    display: grid;
+    flex: 0 0 auto;
+    width: 47px;
+    height: 47px;
+    place-items: center;
+    font-size: 22px;
+    border-radius: 15px;
+}
+
+.blue-icon {
+    background: #dbeafe;
+}
+
+.purple-icon {
+    background: #ede9fe;
+}
+
+.green-icon-box {
+    background: #dcfce7;
+}
+
+.quick-status-card small,
+.quick-status-card strong,
+.quick-status-card p {
+    display: block;
+}
+
+.quick-status-card small {
+    color: #7a849e;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.quick-status-card strong {
+    margin: 4px 0;
+    color: #1e1b4b;
+    font-size: 15px;
+}
+
+.quick-status-card p {
+    margin: 0;
+    color: #76809a;
+    font-size: 10px;
+}
+
+.good-text {
+    color: #15803d !important;
+}
+
+.bad-text {
+    color: #dc2626 !important;
+}
+
+.warning-text {
+    color: #d97706 !important;
+}
+
+/* -------------------------------
+   Main White Cards
+-------------------------------- */
+
+.pretty-result-card {
+    margin-bottom: 23px;
+    padding: 27px;
+    border: 1px solid #e8eaf6;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 30px rgba(49, 46, 129, 0.065);
+}
+
+.pretty-card-heading {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.pretty-card-heading h2 {
+    margin: 7px 0;
+    color: #1e1b4b;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 24px;
+    letter-spacing: -0.03em;
+}
+
+.pretty-card-heading p {
+    margin: 0;
+    color: #707a94;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.match-summary-badge {
+    flex: 0 0 auto;
+    padding: 9px 12px;
+    color: #4f46e5;
+    font-size: 10px;
+    font-weight: 900;
+    border-radius: 999px;
+    background: #eef2ff;
+}
+
+/* -------------------------------
+   Match Comparison
+-------------------------------- */
+
+.comparison-list {
+    display: grid;
+    gap: 11px;
+}
+
+.comparison-item {
+    display: grid;
+    grid-template-columns: 40px minmax(105px, 1fr) minmax(125px, 1fr) 17px minmax(125px, 1fr) 94px;
+    gap: 12px;
+    align-items: center;
+    padding: 13px;
+    border-radius: 16px;
+}
+
+.comparison-item-match {
+    border: 1px solid #bbf7d0;
+    background: #f0fdf4;
+}
+
+.comparison-item-mismatch {
+    border: 1px solid #fed7aa;
+    background: #fff7ed;
+}
+
+.comparison-item-review {
+    border: 1px solid #fde68a;
+    background: #fffbeb;
+}
+
+.comparison-field-icon {
+    display: grid;
+    width: 39px;
+    height: 39px;
+    place-items: center;
+    font-size: 18px;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.73);
+}
+
+.comparison-field-name strong,
+.comparison-field-name span {
+    display: block;
+}
+
+.comparison-field-name strong {
+    color: #26304e;
+    font-size: 12px;
+}
+
+.comparison-field-name span {
+    margin-top: 4px;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.field-match-text {
+    color: #15803d;
+}
+
+.field-mismatch-text {
+    color: #c2410c;
+}
+
+.field-review-text {
+    color: #a16207;
+}
+
+.comparison-value-card {
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.comparison-value-card small,
+.comparison-value-card strong {
+    display: block;
+}
+
+.comparison-value-card small {
+    color: #7c85a0;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.comparison-value-card strong {
+    overflow: hidden;
+    margin-top: 5px;
+    color: #27304f;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.official-value-card {
+    background: rgba(238, 242, 255, 0.78);
+}
+
+.comparison-arrow {
+    color: #6366f1;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.comparison-result-badge {
+    text-align: right;
+}
+
+.nice-match-badge,
+.nice-mismatch-badge,
+.nice-review-badge {
+    display: inline-block;
+    padding: 8px 9px;
+    font-size: 9px;
+    font-weight: 900;
+    white-space: nowrap;
+    border-radius: 999px;
+}
+
+.nice-match-badge {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.nice-mismatch-badge {
+    color: #c2410c;
+    background: #ffedd5;
+}
+
+.nice-review-badge {
+    color: #a16207;
+    background: #fef3c7;
+}
+
+/* -------------------------------
+   Student and Official Details
+-------------------------------- */
+
+.student-details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.student-detail-card {
+    min-height: 91px;
+    padding: 16px;
+    border: 1px solid #e6e8f8;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #fafbff, #ffffff);
+}
+
+.student-detail-card span,
+.student-detail-card strong,
+.student-detail-card small {
+    display: block;
+}
+
+.student-detail-card span {
+    color: #707a94;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+}
+
+.student-detail-card strong {
+    margin-top: 9px;
+    color: #26304e;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.student-detail-card small {
+    margin-top: 7px;
+    color: #a16207;
+    font-size: 9px;
+}
+
+.total-marks-card {
+    border-color: #c7d2fe;
+    background: linear-gradient(135deg, #eef2ff, #ffffff);
+}
+
+.total-marks-card strong {
+    color: #4f46e5;
+    font-size: 24px;
+}
+
+.result-status-card {
+    border-color: #bbf7d0;
+    background: linear-gradient(135deg, #ecfdf5, #ffffff);
+}
+
+.result-status-card strong {
+    color: #15803d;
+    font-size: 21px;
+}
+
+.official-record-card {
+    border-color: #d8ddff;
+    background: linear-gradient(145deg, #fbfbff, #ffffff);
+}
+
+.official-detail-card {
+    border-color: #dfe2ff;
+    background: #f7f8ff;
+}
+
+.official-source-button {
+    flex: 0 0 auto;
+    padding: 11px 13px;
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+}
+
+/* -------------------------------
+   Subject Marks and QR
+-------------------------------- */
+
+.beautiful-marks-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.subject-score-card {
+    padding: 17px 10px;
+    text-align: center;
+    border: 1px solid #e4e7fb;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #fafbff, #ffffff);
+}
+
+.subject-score-card:nth-child(2n) {
+    background: linear-gradient(145deg, #f5f3ff, #ffffff);
+}
+
+.subject-score-card:nth-child(3n) {
+    background: linear-gradient(145deg, #eff6ff, #ffffff);
+}
+
+.subject-book-icon,
+.subject-name,
+.subject-score-card strong,
+.marks-out-of {
+    display: block;
+}
+
+.subject-book-icon {
+    margin-bottom: 8px;
+    font-size: 21px;
+}
+
+.subject-name {
+    min-height: 25px;
+    color: #67718e;
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.subject-score-card strong {
+    margin: 8px 0 2px;
+    color: #4f46e5;
+    font-size: 27px;
+}
+
+.marks-out-of {
+    color: #8c95ad;
+    font-size: 9px;
+}
+
+.qr-link-box,
+.friendly-empty-box {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 19px;
+    border-radius: 15px;
+}
+
+.qr-link-box {
+    border: 1px solid #d8ddff;
+    background: linear-gradient(135deg, #eef2ff, #f8faff);
+}
+
+.qr-big-emoji {
+    display: grid;
+    flex: 0 0 auto;
+    width: 51px;
+    height: 51px;
+    place-items: center;
+    font-size: 25px;
+    border-radius: 15px;
+    background: white;
+}
+
+.qr-link-box small,
+.qr-link-box a {
+    display: block;
+}
+
+.qr-link-box small {
+    margin-bottom: 6px;
+    color: #6f7892;
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.qr-link-box a {
+    overflow: hidden;
+    max-width: 900px;
+    color: #4f46e5;
+    font-size: 12px;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.friendly-empty-box {
+    border: 1px solid #fde68a;
+    background: #fffbeb;
+}
+
+.friendly-empty-box > span {
+    font-size: 29px;
+}
+
+.friendly-empty-box strong,
+.friendly-empty-box p {
+    display: block;
+}
+
+.friendly-empty-box strong {
+    color: #713f12;
+    font-size: 13px;
+}
+
+.friendly-empty-box p {
+    margin: 5px 0 0;
+    color: #8a6d32;
+    font-size: 12px;
+}
+
+/* -------------------------------
+   Raw OCR and Button
+-------------------------------- */
+
+.raw-ocr-box {
+    padding: 17px;
+    margin-top: 23px;
+    border: 1px solid #e6e8f8;
+    border-radius: 15px;
+    background: white;
+}
+
+.raw-ocr-box summary {
+    cursor: pointer;
+    color: #4f46e5;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.raw-ocr-box pre {
+    max-height: 330px;
+    padding: 15px;
+    overflow: auto;
+    margin-top: 15px;
+    color: #dbeafe;
+    font-size: 11px;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    border-radius: 12px;
+    background: #1e1b4b;
+}
+
+.verify-again-area {
+    margin-top: 29px;
+    text-align: center;
+}
+
+.verify-again-button {
+    display: inline-flex;
+    gap: 9px;
+    align-items: center;
+    padding: 15px 21px;
+    color: white;
+    font-size: 13px;
+    font-weight: 900;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+    box-shadow: 0 14px 25px rgba(79, 70, 229, 0.23);
+    transition: 180ms ease;
+}
+
+.verify-again-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 32px rgba(79, 70, 229, 0.3);
+}
+
+/* -------------------------------
+   Responsive Design
+-------------------------------- */
+
+@media (max-width: 900px) {
+    .comparison-item {
+        grid-template-columns: 40px minmax(110px, 1fr) minmax(120px, 1fr);
+    }
+
+    .comparison-arrow {
+        display: none;
+    }
+
+    .comparison-value-card {
+        grid-column: 3;
+    }
+
+    .comparison-result-badge {
+        grid-column: 2 / 4;
+        text-align: left;
+    }
+
+    .student-details-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .beautiful-marks-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .beautiful-result-page {
+        padding: 30px 0 65px;
+    }
+
+    .beautiful-result-page .container {
+        width: min(100% - 28px, 1180px);
+    }
+
+    .result-topbar,
+    .pretty-card-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .result-main-banner {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        text-align: center;
+    }
+
+    .banner-emoji-circle,
+    .result-score-circle {
+        margin: 0 auto;
+    }
+
+    .banner-pill-row {
+        justify-content: center;
+    }
+
+    .quick-status-grid,
+    .student-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-item {
+        grid-template-columns: 40px minmax(0, 1fr);
+    }
+
+    .comparison-field-icon {
+        grid-row: span 3;
+    }
+
+    .comparison-value-card,
+    .official-value-card {
+        grid-column: 2;
+    }
+
+    .comparison-result-badge {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    .beautiful-marks-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .official-source-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .qr-link-box a {
+        max-width: 195px;
+    }
+}

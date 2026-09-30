@@ -1,0 +1,597 @@
+{% extends "base.html" %}
+
+{% block title %}Verification Result | AuthenCert{% endblock %}
+
+{% block content %}
+
+{% set summary = verification_result.comparison_summary %}
+
+<section class="beautiful-result-page">
+    <div class="container">
+
+        <div class="result-topbar">
+            <a href="/upload" class="result-back-button">
+                ← Verify Another Document
+            </a>
+
+            <span class="request-chip">
+                Request #{{ request_id }}
+            </span>
+        </div>
+
+        {% if summary and summary.result_class == "verified" %}
+        <section class="result-main-banner result-success-banner">
+            <div class="banner-emoji-circle">
+                🎉
+            </div>
+
+            <div class="banner-content">
+                <span class="banner-label">
+                    DOCUMENT VERIFIED
+                </span>
+
+                <h1>
+                    Great! This document is authentic.
+                </h1>
+
+                <p>
+                    The uploaded certificate details match the official
+                    QR verification record.
+                </p>
+
+                <div class="banner-pill-row">
+                    <span class="banner-green-pill">
+                        ✅ {{ summary.match_count }} Fields Matched
+                    </span>
+
+                    <span class="banner-white-pill">
+                        🔳 QR Verified
+                    </span>
+                </div>
+            </div>
+
+            <div class="result-score-circle">
+                <span>✓</span>
+                <small>Verified</small>
+            </div>
+        </section>
+
+        {% elif summary and summary.result_class == "mismatch" %}
+        <section class="result-main-banner result-danger-banner">
+            <div class="banner-emoji-circle">
+                ⚠️
+            </div>
+
+            <div class="banner-content">
+                <span class="banner-label">
+                    REVIEW REQUIRED
+                </span>
+
+                <h1>
+                    Tampering Detetcted.
+                </h1>
+
+                <p>
+                    Compare the highlighted values below before accepting
+                    this document as genuine.
+                </p>
+
+                <div class="banner-pill-row">
+                    <span class="banner-red-pill">
+                        ❌ {{ summary.mismatch_count }} Mismatches Found
+                    </span>
+
+                    <span class="banner-white-pill">
+                        🔍 Manual Review Needed
+                    </span>
+                </div>
+            </div>
+
+            <div class="result-score-circle warning-score">
+                <span>!</span>
+                <small>Review</small>
+            </div>
+        </section>
+
+        {% else %}
+        <section class="result-main-banner result-warning-banner">
+            <div class="banner-emoji-circle">
+                🤔
+            </div>
+
+            <div class="banner-content">
+                <span class="banner-label">
+                    PARTIAL RESULT
+                </span>
+
+                <h1>
+                    More review is needed.
+                </h1>
+
+                <p>
+                    We could not complete all verification checks using
+                    the uploaded document and available QR source data.
+                </p>
+
+                <div class="banner-pill-row">
+                    <span class="banner-yellow-pill">
+                        ⚠️ Manual Review Required
+                    </span>
+                </div>
+            </div>
+
+            <div class="result-score-circle review-score">
+                <span>?</span>
+                <small>Review</small>
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="quick-status-grid">
+            <article class="quick-status-card">
+                <span class="quick-status-icon blue-icon">
+                    📄
+                </span>
+
+                <div>
+                    <small>Document</small>
+
+                    <strong>
+                        {{ document_analysis.document_type or "Certificate" }}
+                    </strong>
+
+                    <p>
+                        Confidence:
+                        {{ document_analysis.confidence or "Available" }}
+                    </p>
+                </div>
+            </article>
+
+            <article class="quick-status-card">
+                <span class="quick-status-icon purple-icon">
+                    🔳
+                </span>
+
+                <div>
+                    <small>QR Verification</small>
+
+                    {% if qr_detected %}
+                    <strong class="good-text">
+                        QR Detected
+                    </strong>
+
+                    <p>
+                        ✅ Official source found
+                    </p>
+                    {% else %}
+                    <strong class="bad-text">
+                        QR Not Detected
+                    </strong>
+
+                    <p>
+                        ⚠️ QR data unavailable
+                    </p>
+                    {% endif %}
+                </div>
+            </article>
+
+            <article class="quick-status-card">
+                <span class="quick-status-icon green-icon-box">
+                    🛡️
+                </span>
+
+                <div>
+                    <small>Verification Status</small>
+
+                    {% if summary and summary.result_class == "verified" %}
+                    <strong class="good-text">
+                        Verified
+                    </strong>
+
+                    <p>
+                        🎉 Details matched successfully
+                    </p>
+
+                    {% elif summary and summary.result_class == "mismatch" %}
+                    <strong class="bad-text">
+                        Mismatch Found
+                    </strong>
+
+                    <p>
+                        ❌ Review before approval
+                    </p>
+
+                    {% else %}
+                    <strong class="warning-text">
+                        Needs Review
+                    </strong>
+
+                    <p>
+                        ⚠️ Incomplete comparison
+                    </p>
+                    {% endif %}
+                </div>
+            </article>
+        </section>
+
+        {% if verification_result.comparison_rows is defined %}
+        <section class="pretty-result-card">
+            <div class="pretty-card-heading">
+                <div>
+                    <span class="eyebrow">
+                        🔍 SMART COMPARISON
+                    </span>
+
+                    <h2>
+                        Match Results
+                    </h2>
+
+                    <p>
+                        Uploaded certificate information compared with the
+                        official verification record.
+                    </p>
+                </div>
+
+                {% if summary %}
+                <span class="match-summary-badge">
+                    {% if summary.result_class == "verified" %}
+                    🎉 All Details Matched
+
+                    {% elif summary.result_class == "mismatch" %}
+                    ⚠️ Differences Found
+
+                    {% else %}
+                    🤔 Partial Comparison
+                    {% endif %}
+                </span>
+                {% endif %}
+            </div>
+
+            <div class="comparison-list">
+                {% for row in verification_result.comparison_rows %}
+                <article
+                    class="comparison-item
+                    {% if row.status == 'Match' %}
+                    comparison-item-match
+                    {% elif row.status == 'Mismatch' %}
+                    comparison-item-mismatch
+                    {% else %}
+                    comparison-item-review
+                    {% endif %}
+                    "
+                >
+                    <div class="comparison-field-icon">
+                        {% if row.status == "Match" %}
+                        ✅
+                        {% elif row.status == "Mismatch" %}
+                        ❌
+                        {% else %}
+                        ⚠️
+                        {% endif %}
+                    </div>
+
+                    <div class="comparison-field-name">
+                        <strong>{{ row.field }}</strong>
+
+                        {% if row.status == "Match" %}
+                        <span class="field-match-text">
+                            Perfect Match
+                        </span>
+
+                        {% elif row.status == "Mismatch" %}
+                        <span class="field-mismatch-text">
+                            Value differs
+                        </span>
+
+                        {% else %}
+                        <span class="field-review-text">
+                            Cannot compare
+                        </span>
+                        {% endif %}
+                    </div>
+
+                    <div class="comparison-value-card">
+                        <small>📄 Uploaded</small>
+
+                        <strong>
+                            {{ row.document_value or "Not detected" }}
+                        </strong>
+                    </div>
+
+                    <div class="comparison-arrow">
+                        →
+                    </div>
+
+                    <div class="comparison-value-card official-value-card">
+                        <small>🛡️ Official</small>
+
+                        <strong>
+                            {{ row.official_value or "Not available" }}
+                        </strong>
+                    </div>
+
+                    <div class="comparison-result-badge">
+                        {% if row.status == "Match" %}
+                        <span class="nice-match-badge">
+                            ✅ Matched
+                        </span>
+
+                        {% elif row.status == "Mismatch" %}
+                        <span class="nice-mismatch-badge">
+                            ❌ Unmatched
+                        </span>
+
+                        {% else %}
+                        <span class="nice-review-badge">
+                            ⚠️ Review
+                        </span>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if marksheet_details %}
+        <section class="pretty-result-card">
+            <div class="pretty-card-heading">
+                <div>
+                    <span class="eyebrow">
+                        🎓 STUDENT DETAILS
+                    </span>
+
+                    <h2>
+                        Extracted Certificate Information
+                    </h2>
+
+                    <p>
+                        These details were read from the uploaded document.
+                    </p>
+                </div>
+            </div>
+
+            <div class="student-details-grid">
+                <article class="student-detail-card">
+                    <span>👩‍🎓 Student Name</span>
+
+                    <strong>
+                        {{ marksheet_details.student_name
+                            or details.name
+                            or "Not detected" }}
+                    </strong>
+                </article>
+
+                <article class="student-detail-card">
+                    <span>📅 Exam Session</span>
+
+                    <strong>
+                        {{ marksheet_details.exam_session
+                            or "Not detected" }}
+                    </strong>
+                </article>
+
+                <article class="student-detail-card">
+                    <span>🪪 Roll Number</span>
+
+                    <strong>
+                        {{ marksheet_details.roll_number
+                            or "Not detected" }}
+                    </strong>
+                </article>
+
+                <article class="student-detail-card">
+                    <span>🔢 Register Number</span>
+
+                    <strong>
+                        {{ marksheet_details.register_number
+                            or "Not detected" }}
+                    </strong>
+                </article>
+
+                <article class="student-detail-card total-marks-card">
+                    <span>🏆 Total Marks</span>
+
+                    <strong>
+                        {{ marksheet_details.total_marks
+                            or "Not detected" }}
+                    </strong>
+
+                    {% if marksheet_details.total_marks_source %}
+                    <small>
+                        Source: {{ marksheet_details.total_marks_source }}
+                    </small>
+                    {% endif %}
+                </article>
+
+                <article class="student-detail-card result-status-card">
+                    <span>✨ Final Result</span>
+
+                    <strong>
+                        {{ marksheet_details.result
+                            or "Not detected" }}
+                    </strong>
+                </article>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if marksheet_details and marksheet_details.subject_marks %}
+        <section class="pretty-result-card">
+            <div class="pretty-card-heading">
+                <div>
+                    <span class="eyebrow">
+                        📚 SUBJECT PERFORMANCE
+                    </span>
+
+                    <h2>
+                        Marksheet Subject Scores
+                    </h2>
+
+                    <p>
+                        Subject marks extracted from the uploaded certificate.
+                    </p>
+                </div>
+            </div>
+
+            <div class="beautiful-marks-grid">
+                {% for subject, mark in marksheet_details.subject_marks.items() %}
+                <article class="subject-score-card">
+                    <span class="subject-book-icon">📖</span>
+
+                    <span class="subject-name">
+                        {{ subject }}
+                    </span>
+
+                    <strong>{{ mark or "--" }}</strong>
+
+                    <span class="marks-out-of">
+                        Marks
+                    </span>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if verification_result.official_details %}
+        <section class="pretty-result-card official-record-card">
+            <div class="pretty-card-heading">
+                <div>
+                    <span class="eyebrow">
+                        🛡️ OFFICIAL QR RECORD
+                    </span>
+
+                    <h2>
+                        Official Verification Details
+                    </h2>
+
+                    <p>
+                        Details extracted from the official QR verification
+                        source.
+                    </p>
+                </div>
+
+                {% if verification_result.verification_url %}
+                <a
+                    href="{{ verification_result.verification_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="official-source-button"
+                >
+                    🔗 Open Official Source
+                </a>
+                {% endif %}
+            </div>
+            {% if verification_result.official_details.error %}
+<div class="friendly-empty-box">
+    <span>⚠️</span>
+
+    <div>
+        <strong>
+            Official details could not be extracted
+        </strong>
+
+        <p>
+            {{ verification_result.official_details.error }}
+        </p>
+    </div>
+</div>
+{% endif %}
+            {% if verification_result.official_details.detected_fields %}
+            <div class="student-details-grid">
+                {% for label, value in verification_result.official_details.detected_fields.items() %}
+                <article class="student-detail-card official-detail-card">
+                    <span>
+                        🛡️ {{ label.replace("_", " ").title() }}
+                    </span>
+
+                    <strong>{{ value }}</strong>
+                </article>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="friendly-empty-box">
+                <span>🤔</span>
+
+                <div>
+                    <strong>
+                        Official website opened successfully
+                    </strong>
+
+                    <p>
+                        But structured certificate fields could not be
+                        extracted automatically.
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+        {% endif %}
+
+        <section class="pretty-result-card">
+            <div class="pretty-card-heading">
+                <div>
+                    <span class="eyebrow">
+                        🔳 QR INFORMATION
+                    </span>
+
+                    <h2>
+                        Decoded QR Content
+                    </h2>
+                </div>
+            </div>
+
+            {% if qr_detected %}
+            <div class="qr-link-box">
+                <span class="qr-big-emoji">🔗</span>
+
+                <div>
+                    <small>
+                        QR verification source
+                    </small>
+
+                    <a
+                        href="{{ qr_content }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {{ qr_content }}
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <div class="friendly-empty-box">
+                <span>🔳</span>
+
+                <div>
+                    <strong>No QR code found</strong>
+
+                    <p>
+                        Upload a clearer image or a document with a QR code.
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+
+        <details class="raw-ocr-box">
+            <summary>
+                <span>🧾</span>
+                Technical View: Raw OCR Extracted Text
+            </summary>
+
+            <pre>{{ raw_ocr_text or "No readable OCR text found." }}</pre>
+        </details>
+
+        <div class="verify-again-area">
+            <a href="/upload" class="verify-again-button">
+                <span>📤</span>
+                Verify Another Document
+                <b>→</b>
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
